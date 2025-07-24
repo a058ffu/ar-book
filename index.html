@@ -1,16 +1,35 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>AR テキスト 背景付き</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AR on iPhone</title>
-    <script src="https://cdn.jsdelivr.net/npm/aframe@1.4.2/dist/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/ar.js@3.4.2/aframe/build/aframe-ar.min.js"></script>
+    <!-- A-Frame + AR.js 読み込み -->
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
   </head>
-  <body style="margin: 0; overflow: hidden;">
+  <body style="margin: 0; overflow: hidden">
     <a-scene embedded arjs>
+      <!-- マーカー（.pattファイルが必要） -->
       <a-marker type="pattern" url="marker-animal.patt">
-        <a-box position="0 0.5 0" color="#FF0000" depth="0.3" height="0.3" width="0.3"></a-box>
+        
+        <!-- 白い板（テキスト背景） -->
+        <a-plane 
+          position="0 0.5 0" 
+          width="1" 
+          height="0.4" 
+          color="white" 
+          rotation="-90 0 0">
+        </a-plane>
+
+        <!-- 黒いテキスト -->
+        <a-entity 
+          text="value: これはテストです; color: black; align: center; width: 5" 
+          position="0 0.501 0" 
+          rotation="-90 0 0">
+        </a-entity>
+
       </a-marker>
+      
       <a-entity camera></a-entity>
     </a-scene>
   </body>
